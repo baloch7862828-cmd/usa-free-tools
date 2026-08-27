@@ -7,5 +7,29 @@
 <body>
   <h1>USA Free Tools</h1>
   <p>Free online tools for everyone.</p>
+
+  <hr>
+
+  <h2>Percentage Calculator</h2>
+
+  <input type="number" id="number" placeholder="Enter number">
+  <input type="number" id="percent" placeholder="Enter percentage">
+
+  <button onclick="calculate()">Calculate</button>
+
+  <p id="result"></p>
+
+  <script>
+    function calculate() {
+      let number = document.getElementById("number").value;
+      let percent = document.getElementById("percent").value;
+
+      let result = (number * percent) / 100;
+
+      document.getElementById("result").innerText =
+        "Result: " + result;
+    }
+  </script>
+
 </body>
 </html>
