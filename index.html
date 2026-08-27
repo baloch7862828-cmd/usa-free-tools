@@ -211,5 +211,33 @@ function calculateDiscount() {
     " | Final price: $" + finalPrice.toFixed(2);
 }
 </script>
+  <hr>
+
+<h2>Length Converter</h2>
+
+<input type="number" id="meters" placeholder="Enter meters">
+
+<button onclick="convertLength()">Convert</button>
+
+<p id="lengthResult"></p>
+
+<script>
+function convertLength() {
+  let meters = parseFloat(document.getElementById("meters").value);
+
+  if (isNaN(meters)) {
+    document.getElementById("lengthResult").innerText =
+      "Please enter a number.";
+    return;
+  }
+
+  let feet = meters * 3.28084;
+  let inches = meters * 39.3701;
+
+  document.getElementById("lengthResult").innerText =
+    "Feet: " + feet.toFixed(2) +
+    " | Inches: " + inches.toFixed(2);
+}
+</script>
 </body>
 </html>
