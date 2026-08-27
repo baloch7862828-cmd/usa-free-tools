@@ -30,6 +30,35 @@
         "Result: " + result;
     }
   </script>
+<hr>
 
+<h2>Age Calculator</h2>
+
+<input type="date" id="birthDate">
+
+<button onclick="calculateAge()">Calculate Age</button>
+
+<p id="ageResult"></p>
+
+<script>
+  function calculateAge() {
+    let birthDate = new Date(document.getElementById("birthDate").value);
+    let today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    let month = today.getMonth() - birthDate.getMonth();
+
+    if (
+      month < 0 ||
+      (month === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+
+    document.getElementById("ageResult").innerText =
+      "Your age is: " + age + " years";
+  }
+</script>
 </body>
 </html>
