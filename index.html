@@ -60,5 +60,36 @@
       "Your age is: " + age + " years";
   }
 </script>
+  <hr>
+
+<h2>Tip Calculator</h2>
+
+<input type="number" id="bill" placeholder="Bill amount ($)">
+
+<input type="number" id="tip" placeholder="Tip percentage (%)">
+
+<button onclick="calculateTip()">Calculate Tip</button>
+
+<p id="tipResult"></p>
+
+<script>
+function calculateTip() {
+  let bill = parseFloat(document.getElementById("bill").value);
+  let tip = parseFloat(document.getElementById("tip").value);
+
+  if (isNaN(bill) || isNaN(tip)) {
+    document.getElementById("tipResult").innerText =
+      "Please enter both amounts.";
+    return;
+  }
+
+  let tipAmount = (bill * tip) / 100;
+  let total = bill + tipAmount;
+
+  document.getElementById("tipResult").innerText =
+    "Tip: $" + tipAmount.toFixed(2) +
+    " | Total: $" + total.toFixed(2);
+}
+</script>
 </body>
 </html>
