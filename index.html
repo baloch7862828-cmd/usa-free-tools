@@ -180,5 +180,36 @@ function resizeImage() {
   reader.readAsDataURL(file);
 }
 </script>
+  <hr>
+
+<h2>Discount Calculator</h2>
+
+<input type="number" id="price" placeholder="Original price ($)">
+
+<input type="number" id="discount" placeholder="Discount (%)">
+
+<button onclick="calculateDiscount()">Calculate Discount</button>
+
+<p id="discountResult"></p>
+
+<script>
+function calculateDiscount() {
+  let price = parseFloat(document.getElementById("price").value);
+  let discount = parseFloat(document.getElementById("discount").value);
+
+  if (isNaN(price) || isNaN(discount)) {
+    document.getElementById("discountResult").innerText =
+      "Please enter price and discount.";
+    return;
+  }
+
+  let saved = (price * discount) / 100;
+  let finalPrice = price - saved;
+
+  document.getElementById("discountResult").innerText =
+    "You save: $" + saved.toFixed(2) +
+    " | Final price: $" + finalPrice.toFixed(2);
+}
+</script>
 </body>
 </html>
