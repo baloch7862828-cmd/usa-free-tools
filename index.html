@@ -1,141 +1,329 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
+  <title>USA Free Tools</title>
+
   <style>
-body {
-  <nav>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header {
+      background: #222;
+      color: white;
+      padding: 25px;
+      border-radius: 10px;
+    }
+
+    nav {
+      margin: 20px 0;
+    }
+
+    nav a {
+      margin: 0 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .tool {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      margin: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      max-width: 90%;
+    }
+
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    hr {
+      margin: 30px 0;
+    }
+
+    #canvas {
+      max-width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      input, textarea {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header id="home">
+  <h1>USA Free Tools</h1>
+  <p>Simple and free online tools for everyone.</p>
+</header>
+
+<nav>
   <a href="#home">Home</a> |
   <a href="#tools">Tools</a> |
   <a href="#about">About</a> |
   <a href="#contact">Contact</a>
 </nav>
 
-<br>
-<hr>
-  font-family: Arial, sans-serif;
-  background: #f5f7fa;
-  margin: 0;
-  padding: 20px;
-  text-align: center;
-}
-
-h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  margin-top: 25px;
-}
-
-input, textarea {
-  padding: 10px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-button {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-hr {
-  margin: 30px 0;
-}
-
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  input, textarea {
-    width: 90%;
-  }
-}
-</style>
-  <title>USA Free Tools</title>
-</head>
-
-<body>
-  <h1>USA Free Tools</h1>
-  <p>Free online tools for everyone.</p>
-
-  <hr>
-
-  <h2>Percentage Calculator</h2>
-
-  <input type="number" id="number" placeholder="Enter number">
-  <input type="number" id="percent" placeholder="Enter percentage">
-
-  <button onclick="calculate()">Calculate</button>
-
-  <p id="result"></p>
-
-  <script>
-    function calculate() {
-      let number = document.getElementById("number").value;
-      let percent = document.getElementById("percent").value;
-
-      let result = (number * percent) / 100;
-
-      document.getElementById("result").innerText =
-        "Result: " + result;
-    }
-  </script>
 <hr>
 
-<h2>Age Calculator</h2>
+<div id="tools">
 
-<input type="date" id="birthDate">
+  <div class="tool">
+    <h2>Percentage Calculator</h2>
 
-<button onclick="calculateAge()">Calculate Age</button>
+    <input type="number" id="number" placeholder="Enter number">
+    <input type="number" id="percent" placeholder="Enter percentage">
 
-<p id="ageResult"></p>
+    <br>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <p id="result"></p>
+  </div>
+
+
+  <div class="tool">
+    <h2>Age Calculator</h2>
+
+    <input type="date" id="birthDate">
+
+    <br>
+
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <p id="ageResult"></p>
+  </div>
+
+
+  <div class="tool">
+    <h2>Tip Calculator</h2>
+
+    <input type="number" id="bill" placeholder="Bill amount ($)">
+    <input type="number" id="tip" placeholder="Tip percentage (%)">
+
+    <br>
+
+    <button onclick="calculateTip()">Calculate Tip</button>
+
+    <p id="tipResult"></p>
+  </div>
+
+
+  <div class="tool">
+    <h2>Word Counter</h2>
+
+    <textarea id="textInput" rows="8"
+      placeholder="Type or paste your text here..."></textarea>
+
+    <br>
+
+    <button onclick="countWords()">Count Words</button>
+
+    <p id="wordResult"></p>
+  </div>
+
+
+  <div class="tool">
+    <h2>Image Resizer</h2>
+
+    <input type="file" id="imageInput" accept="image/*">
+
+    <br>
+
+    <input type="number" id="width" placeholder="Width">
+    <input type="number" id="height" placeholder="Height">
+
+    <br>
+
+    <button onclick="resizeImage()">Resize Image</button>
+
+    <br><br>
+
+    <canvas id="canvas"></canvas>
+
+    <br><br>
+
+    <a id="downloadLink"
+       style="display:none;"
+       download="resized-image.png">
+       Download Resized Image
+    </a>
+  </div>
+
+
+  <div class="tool">
+    <h2>Discount Calculator</h2>
+
+    <input type="number" id="price" placeholder="Original price ($)">
+    <input type="number" id="discount" placeholder="Discount (%)">
+
+    <br>
+
+    <button onclick="calculateDiscount()">Calculate Discount</button>
+
+    <p id="discountResult"></p>
+  </div>
+
+
+  <div class="tool">
+    <h2>Length Converter</h2>
+
+    <input type="number" id="meters" placeholder="Enter meters">
+
+    <br>
+
+    <button onclick="convertLength()">Convert</button>
+
+    <p id="lengthResult"></p>
+  </div>
+
+
+  <div class="tool">
+    <h2>USD to PKR Converter</h2>
+
+    <input type="number" id="usd" placeholder="Enter USD">
+
+    <br>
+
+    <button onclick="convertCurrency()">Convert</button>
+
+    <p id="currencyResult"></p>
+
+    <small>Demo exchange rate: 1 USD = 280 PKR</small>
+  </div>
+
+
+  <div class="tool">
+    <h2>Password Generator</h2>
+
+    <input type="number"
+           id="passwordLength"
+           value="12"
+           min="4"
+           max="50">
+
+    <br>
+
+    <button onclick="generatePassword()">
+      Generate Password
+    </button>
+
+    <p id="passwordResult"></p>
+  </div>
+
+</div>
+
+<hr>
+
+<div id="about" class="tool">
+  <h2>About Us</h2>
+
+  <p>
+    USA Free Tools provides simple, fast and free online tools
+    for everyday use.
+  </p>
+
+  <p>
+    Our tools are designed to be easy to use on both mobile phones
+    and computers.
+  </p>
+</div>
+
+<hr>
+
+<div id="contact" class="tool">
+  <h2>Contact Us</h2>
+
+  <p>Email: your@email.com</p>
+
+  <p>We are happy to hear from you.</p>
+</div>
+
 
 <script>
-  function calculateAge() {
-    let birthDate = new Date(document.getElementById("birthDate").value);
-    let today = new Date();
 
-    let age = today.getFullYear() - birthDate.getFullYear();
+function calculate() {
+  let number = parseFloat(document.getElementById("number").value);
+  let percent = parseFloat(document.getElementById("percent").value);
 
-    let month = today.getMonth() - birthDate.getMonth();
+  if (isNaN(number) || isNaN(percent)) {
+    document.getElementById("result").innerText =
+      "Please enter both numbers.";
+    return;
+  }
 
-    if (
-      month < 0 ||
-      (month === 0 && today.getDate() < birthDate.getDate())
-    ) {
-      age--;
-    }
+  let result = (number * percent) / 100;
 
+  document.getElementById("result").innerText =
+    "Result: " + result;
+}
+
+
+function calculateAge() {
+  let birthDate =
+    new Date(document.getElementById("birthDate").value);
+
+  let today = new Date();
+
+  if (isNaN(birthDate.getTime())) {
     document.getElementById("ageResult").innerText =
-      "Your age is: " + age + " years";
+      "Please select your birth date.";
+    return;
   }
-</script>
-  <hr>
 
-<h2>Tip Calculator</h2>
+  let age =
+    today.getFullYear() - birthDate.getFullYear();
 
-<input type="number" id="bill" placeholder="Bill amount ($)">
+  let month =
+    today.getMonth() - birthDate.getMonth();
 
-<input type="number" id="tip" placeholder="Tip percentage (%)">
+  if (
+    month < 0 ||
+    (month === 0 &&
+    today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
 
-<button onclick="calculateTip()">Calculate Tip</button>
+  document.getElementById("ageResult").innerText =
+    "Your age is: " + age + " years";
+}
 
-<p id="tipResult"></p>
 
-<script>
 function calculateTip() {
-  let bill = parseFloat(document.getElementById("bill").value);
-  let tip = parseFloat(document.getElementById("tip").value);
+  let bill =
+    parseFloat(document.getElementById("bill").value);
+
+  let tip =
+    parseFloat(document.getElementById("tip").value);
 
   if (isNaN(bill) || isNaN(tip)) {
     document.getElementById("tipResult").innerText =
@@ -150,66 +338,32 @@ function calculateTip() {
     "Tip: $" + tipAmount.toFixed(2) +
     " | Total: $" + total.toFixed(2);
 }
-</script>
-  <hr>
 
-<h2>Word Counter</h2>
 
-<textarea id="textInput" rows="8" cols="40"
-placeholder="Type or paste your text here..."></textarea>
-
-<br><br>
-
-<button onclick="countWords()">Count Words</button>
-
-<p id="wordResult"></p>
-
-<script>
 function countWords() {
-  let text = document.getElementById("textInput").value.trim();
+  let text =
+    document.getElementById("textInput").value.trim();
 
-  let words = text === "" ? 0 : text.split(/\s+/).length;
+  let words =
+    text === "" ? 0 : text.split(/\s+/).length;
+
   let characters = text.length;
 
   document.getElementById("wordResult").innerText =
-    "Words: " + words + " | Characters: " + characters;
+    "Words: " + words +
+    " | Characters: " + characters;
 }
-</script>
-  <hr>
 
-<h2>Image Resizer</h2>
 
-<input type="file" id="imageInput" accept="image/*">
-
-<br><br>
-
-<label>Width:</label>
-<input type="number" id="width" placeholder="Width">
-
-<br><br>
-
-<label>Height:</label>
-<input type="number" id="height" placeholder="Height">
-
-<br><br>
-
-<button onclick="resizeImage()">Resize Image</button>
-
-<br><br>
-
-<canvas id="canvas" style="max-width:100%;"></canvas>
-
-<br><br>
-
-<a id="downloadLink" style="display:none;" download="resized-image.png">
-  Download Resized Image
-</a>
-
-<script>
 function resizeImage() {
-  let file = document.getElementById("imageInput").files[0];
-  let width = parseInt(document.getElementById("width").value);
-  let height = parseInt(document.getElementById("height").value);
+  let file =
+    document.getElementById("imageInput").files[0];
+
+  let width =
+    parseInt(document.getElementById("width").value);
+
+  let height =
+    parseInt(document.getElementById("height").value);
 
   if (!file || !width || !height) {
     alert("Please select an image and enter width and height.");
@@ -220,17 +374,26 @@ function resizeImage() {
   let reader = new FileReader();
 
   reader.onload = function(e) {
+
     img.onload = function() {
-      let canvas = document.getElementById("canvas");
-      let ctx = canvas.getContext("2d");
+
+      let canvas =
+        document.getElementById("canvas");
+
+      let ctx =
+        canvas.getContext("2d");
 
       canvas.width = width;
       canvas.height = height;
 
       ctx.drawImage(img, 0, 0, width, height);
 
-      let downloadLink = document.getElementById("downloadLink");
-      downloadLink.href = canvas.toDataURL("image/png");
+      let downloadLink =
+        document.getElementById("downloadLink");
+
+      downloadLink.href =
+        canvas.toDataURL("image/png");
+
       downloadLink.style.display = "inline";
     };
 
@@ -239,23 +402,14 @@ function resizeImage() {
 
   reader.readAsDataURL(file);
 }
-</script>
-  <hr>
 
-<h2>Discount Calculator</h2>
 
-<input type="number" id="price" placeholder="Original price ($)">
-
-<input type="number" id="discount" placeholder="Discount (%)">
-
-<button onclick="calculateDiscount()">Calculate Discount</button>
-
-<p id="discountResult"></p>
-
-<script>
 function calculateDiscount() {
-  let price = parseFloat(document.getElementById("price").value);
-  let discount = parseFloat(document.getElementById("discount").value);
+  let price =
+    parseFloat(document.getElementById("price").value);
+
+  let discount =
+    parseFloat(document.getElementById("discount").value);
 
   if (isNaN(price) || isNaN(discount)) {
     document.getElementById("discountResult").innerText =
@@ -270,20 +424,11 @@ function calculateDiscount() {
     "You save: $" + saved.toFixed(2) +
     " | Final price: $" + finalPrice.toFixed(2);
 }
-</script>
-  <hr>
 
-<h2>Length Converter</h2>
 
-<input type="number" id="meters" placeholder="Enter meters">
-
-<button onclick="convertLength()">Convert</button>
-
-<p id="lengthResult"></p>
-
-<script>
 function convertLength() {
-  let meters = parseFloat(document.getElementById("meters").value);
+  let meters =
+    parseFloat(document.getElementById("meters").value);
 
   if (isNaN(meters)) {
     document.getElementById("lengthResult").innerText =
@@ -298,20 +443,12 @@ function convertLength() {
     "Feet: " + feet.toFixed(2) +
     " | Inches: " + inches.toFixed(2);
 }
-</script>
-  <hr>
 
-<h2>USD to PKR Converter</h2>
 
-<input type="number" id="usd" placeholder="Enter USD">
-
-<button onclick="convertCurrency()">Convert</button>
-
-<p id="currencyResult"></p>
-
-<script>
 function convertCurrency() {
-  let usd = parseFloat(document.getElementById("usd").value);
+  let usd =
+    parseFloat(document.getElementById("usd").value);
+
   let rate = 280;
 
   if (isNaN(usd)) {
@@ -323,22 +460,16 @@ function convertCurrency() {
   let pkr = usd * rate;
 
   document.getElementById("currencyResult").innerText =
-    "$" + usd.toFixed(2) + " = Rs. " + pkr.toFixed(2);
+    "$" + usd.toFixed(2) +
+    " = Rs. " + pkr.toFixed(2);
 }
-</script>
-  <hr>
 
-<h2>Password Generator</h2>
 
-<input type="number" id="passwordLength" value="12" min="4" max="50">
-
-<button onclick="generatePassword()">Generate Password</button>
-
-<p id="passwordResult"></p>
-
-<script>
 function generatePassword() {
-  let length = parseInt(document.getElementById("passwordLength").value);
+  let length =
+    parseInt(
+      document.getElementById("passwordLength").value
+    );
 
   let characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
@@ -346,14 +477,18 @@ function generatePassword() {
   let password = "";
 
   for (let i = 0; i < length; i++) {
-    password += characters.charAt(
-      Math.floor(Math.random() * characters.length)
-    );
+    password +=
+      characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
   }
 
   document.getElementById("passwordResult").innerText =
     "Your Password: " + password;
 }
+
 </script>
+
 </body>
 </html>
+```
