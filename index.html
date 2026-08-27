@@ -239,5 +239,32 @@ function convertLength() {
     " | Inches: " + inches.toFixed(2);
 }
 </script>
+  <hr>
+
+<h2>USD to PKR Converter</h2>
+
+<input type="number" id="usd" placeholder="Enter USD">
+
+<button onclick="convertCurrency()">Convert</button>
+
+<p id="currencyResult"></p>
+
+<script>
+function convertCurrency() {
+  let usd = parseFloat(document.getElementById("usd").value);
+  let rate = 280;
+
+  if (isNaN(usd)) {
+    document.getElementById("currencyResult").innerText =
+      "Please enter an amount.";
+    return;
+  }
+
+  let pkr = usd * rate;
+
+  document.getElementById("currencyResult").innerText =
+    "$" + usd.toFixed(2) + " = Rs. " + pkr.toFixed(2);
+}
+</script>
 </body>
 </html>
