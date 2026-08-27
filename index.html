@@ -91,5 +91,29 @@ function calculateTip() {
     " | Total: $" + total.toFixed(2);
 }
 </script>
+  <hr>
+
+<h2>Word Counter</h2>
+
+<textarea id="textInput" rows="8" cols="40"
+placeholder="Type or paste your text here..."></textarea>
+
+<br><br>
+
+<button onclick="countWords()">Count Words</button>
+
+<p id="wordResult"></p>
+
+<script>
+function countWords() {
+  let text = document.getElementById("textInput").value.trim();
+
+  let words = text === "" ? 0 : text.split(/\s+/).length;
+  let characters = text.length;
+
+  document.getElementById("wordResult").innerText =
+    "Words: " + words + " | Characters: " + characters;
+}
+</script>
 </body>
 </html>
