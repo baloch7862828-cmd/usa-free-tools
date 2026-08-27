@@ -266,5 +266,34 @@ function convertCurrency() {
     "$" + usd.toFixed(2) + " = Rs. " + pkr.toFixed(2);
 }
 </script>
+  <hr>
+
+<h2>Password Generator</h2>
+
+<input type="number" id="passwordLength" value="12" min="4" max="50">
+
+<button onclick="generatePassword()">Generate Password</button>
+
+<p id="passwordResult"></p>
+
+<script>
+function generatePassword() {
+  let length = parseInt(document.getElementById("passwordLength").value);
+
+  let characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+  let password = "";
+
+  for (let i = 0; i < length; i++) {
+    password += characters.charAt(
+      Math.floor(Math.random() * characters.length)
+    );
+  }
+
+  document.getElementById("passwordResult").innerText =
+    "Your Password: " + password;
+}
+</script>
 </body>
 </html>
